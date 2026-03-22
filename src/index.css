@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 10%;
+    --foreground: 220 20% 92%;
+
+    --card: 240 18% 14%;
+    --card-foreground: 220 20% 92%;
+
+    --popover: 240 18% 14%;
+    --popover-foreground: 220 20% 92%;
+
+    --primary: 260 58% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 16% 20%;
+    --secondary-foreground: 220 20% 92%;
+
+    --muted: 240 14% 18%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 260 58% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 12% 22%;
+    --input: 240 12% 22%;
+    --ring: 260 58% 53%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 20% 8%;
+    --sidebar-foreground: 220 20% 75%;
+    --sidebar-primary: 260 58% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 16% 16%;
+    --sidebar-accent-foreground: 220 20% 92%;
+    --sidebar-border: 240 12% 18%;
+    --sidebar-ring: 260 58% 53%;
+
+    /* Neurora custom tokens */
+    --neurora-charcoal: 240 20% 10%;
+    --neurora-indigo: 260 58% 53%;
+    --neurora-mint: 157 100% 50%;
+    --neurora-amber: 42 100% 50%;
+    --neurora-danger: 0 72% 51%;
+    --neurora-glass: 240 18% 14%;
+    --neurora-glass-border: 240 12% 25%;
+
+    /* Premium tokens */
+    --neurora-gold: 43 96% 56%;
+    --neurora-gold-dark: 38 80% 42%;
+    --neurora-amethyst: 270 60% 58%;
+    --neurora-amethyst-light: 270 70% 72%;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-xl border border-neurora-glass-border/30;
+    background: hsl(var(--neurora-glass) / 0.6);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px hsl(var(--neurora-indigo) / 0.08),
+      0 2px 8px hsl(0 0% 0% / 0.3);
+  }
+
+  .glass-sidebar {
+    background: hsl(var(--sidebar-background) / 0.85);
+    backdrop-filter: blur(24px);
+    border-right: 1px solid hsl(var(--neurora-glass-border) / 0.3);
+  }
+
+  .glow-indigo {
+    box-shadow: 0 0 20px hsl(var(--neurora-indigo) / 0.4),
+      0 0 40px hsl(var(--neurora-indigo) / 0.15);
+  }
+
+  .glow-mint {
+    box-shadow: 0 0 12px hsl(var(--neurora-mint) / 0.3);
+  }
+
+  .glow-amber {
+    box-shadow: 0 0 12px hsl(var(--neurora-amber) / 0.3);
+  }
+
+  .glow-danger {
+    box-shadow: 0 0 12px hsl(var(--neurora-danger) / 0.4);
+  }
+
+  .text-gradient-indigo {
+    background: linear-gradient(135deg, hsl(var(--neurora-indigo)), hsl(260 70% 70%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--neurora-gold)), hsl(var(--neurora-amethyst-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px hsl(var(--neurora-gold) / 0.35),
+      0 0 40px hsl(var(--neurora-gold) / 0.12);
+  }
+
+  .glow-amethyst {
+    box-shadow: 0 0 20px hsl(var(--neurora-amethyst) / 0.35),
+      0 0 40px hsl(var(--neurora-amethyst) / 0.12);
+  }
+
+  .glass-card-premium {
+    @apply rounded-xl;
+    background: hsl(var(--neurora-glass) / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--neurora-gold) / 0.25);
+    box-shadow: 0 8px 32px hsl(var(--neurora-gold) / 0.08),
+      0 2px 8px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer utilities {
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 8px hsl(var(--neurora-danger) / 0.4);
+    }
+
+    50% {
+      box-shadow: 0 0 24px hsl(var(--neurora-danger) / 0.7), 0 0 48px hsl(var(--neurora-danger) / 0.3);
+    }
+  }
+
+  @keyframes neural-wave {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes brain-pulse {
+
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+
+    50% {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+  }
+
+  @keyframes laser-scan {
+    0% {
+      top: 0;
+    }
+
+    100% {
+      top: 100%;
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-neural-wave {
+    animation: neural-wave 3s ease-in-out infinite;
+  }
+
+  .animate-brain-pulse {
+    animation: brain-pulse 1.5s ease-in-out infinite;
+  }
+
+  .animate-laser-scan {
+    animation: laser-scan 2s ease-in-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+  }
+
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
